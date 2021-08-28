@@ -15,7 +15,7 @@ from rest_framework.decorators import (
 # Create your views here.
 
 
-@api_view(['GET', ])
+@api_view(['POST', ])
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def api_post_view(request, slug):
@@ -25,7 +25,7 @@ def api_post_view(request, slug):
     except Post.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-    if request.method == 'GET':
+    if request.method == 'POST':
         print("here 3")
         serializer = PostSerializer(post)
         print(serializer.data)
