@@ -1,14 +1,23 @@
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
 from .serializers import PostSerializer
 from .models import Post
 from django.http import JsonResponse
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.decorators import (
+    authentication_classes,
+    permission_classes,
+    api_view
+)
 # Create your views here.
 
 
 @api_view(['GET', ])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def api_post_view(request, slug):
     try:
         post = Post.objects.get(slug=slug)
@@ -20,5 +29,5 @@ def api_post_view(request, slug):
         print("here 3")
         serializer = PostSerializer(post)
         print(serializer.data)
-        return JsonResponse(serializer.data)
-        # return Response(serializer.data)
+        # return JsonResponse(serializer.data)
+        return Response(serializer.data)
