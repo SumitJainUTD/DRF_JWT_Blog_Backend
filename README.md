@@ -20,13 +20,7 @@ Your app is running on now http://127.0.0.1:3000/
 
 End points: 
 1. admin - http://127.0.0.1:3000/admin
-   Response: 
-   ```
-   {
-    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYzMDI5ODA5NiwianRpIjoiZjRmMDdmZjBlYzI0NDY4YWFkOGNjZmU1ZDA1OTlhYTgiLCJ1c2VyX2lkIjoyfQ.VIpA02dDf2wjDb5oKqmxXpsJJ6aeQb21Rds58i7ii6w",
-    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMjE1Mjk2LCJqdGkiOiIxMTIwZjE5MTE0YTU0MDcwYTFkNTIxZDRmY2MwODg0YSIsInVzZXJfaWQiOjJ9.ykZ0XNg-_UQhEPp24bAkYKF_Cwv5KyD4ymcnQ3VvhwA"
-    }
-   ```
+   
 2. get all posts: http://127.0.0.1:3000/api/list
    Response: 
    ```[
@@ -83,6 +77,13 @@ curl --location --request POST '127.0.0.1:3000/jwt/token/refresh/' \
     "refresh" :"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYzMDI3OTU4NiwianRpIjoiODM2MjUxNWZkNGViNGY4NTg0NTVhNThmNjc5MmRkYzgiLCJ1c2VyX2lkIjoxfQ.zx5YDIXhnY1aZLSslQU7XnAqtcdlDagwP7jmzOlkyTA"
 }'
 ```
+Response: 
+   ```
+   {
+    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYzMDI5ODA5NiwianRpIjoiZjRmMDdmZjBlYzI0NDY4YWFkOGNjZmU1ZDA1OTlhYTgiLCJ1c2VyX2lkIjoyfQ.VIpA02dDf2wjDb5oKqmxXpsJJ6aeQb21Rds58i7ii6w",
+    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMwMjE1Mjk2LCJqdGkiOiIxMTIwZjE5MTE0YTU0MDcwYTFkNTIxZDRmY2MwODg0YSIsInVzZXJfaWQiOjJ9.ykZ0XNg-_UQhEPp24bAkYKF_Cwv5KyD4ymcnQ3VvhwA"
+    }
+   ```
 6. create post 
 ```
 curl --location --request POST '127.0.0.1:3000/api/create' \
