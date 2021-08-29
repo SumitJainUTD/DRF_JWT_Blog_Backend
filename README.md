@@ -23,12 +23,12 @@ End points:
 2. get all posts: http://127.0.0.1:3000/api/list
 3. get post: http://127.0.0.1:3000/api/<slug> // http://127.0.0.1:3000/api/first
 4. get token/login: 
-`curl --location --request POST '127.0.0.1:3000/jwt/token/' \
+````curl --location --request POST '127.0.0.1:3000/jwt/token/' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "username": "admin",
     "password": "test"
-}'`
+}'````
 5. get token
 `curl --location --request POST '127.0.0.1:3000/jwt/token/refresh/' \
 --header 'Content-Type: application/json' \
