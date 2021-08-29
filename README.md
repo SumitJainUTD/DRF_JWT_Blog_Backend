@@ -12,6 +12,9 @@
 6. python manage.py makemigrations
 7. python manage.py migrate
 8. pyhton manage.py runserver 3000
+9. user/pwd
+    9.1 test/test
+    9.2 admin/test
 
 Your app is running on now http://127.0.0.1:3000/
 
@@ -48,4 +51,5 @@ End points:
     "title":"fourth_post_title_updated_2",
     "content":"fourth_post_content_updated"
 }'`
+   
 
