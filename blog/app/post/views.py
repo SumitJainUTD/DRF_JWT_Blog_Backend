@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.response import Response
-from .serializers import PostSerializer, PostCreateSerializer
+from .serializers import PostSerializer, PostCreateSerializer, PostUpdateSerializer
 from .models import Post
 from django.http import JsonResponse
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
@@ -58,6 +58,35 @@ def api_create_posts_view(request):
             data['title'] = blog_post.title
             data['content'] = blog_post.content
             data['slug'] = blog_post.slug
+            data['username'] = blog_post.author.username
+            return Response(data=data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# Url: https://<your-domain>/api/blog/<slug>/update
+# Headers: Authorization: Token <token>
+@api_view(['PUT', ])
+@permission_classes((IsAuthenticated,))
+def api_update_blog_view(request, slug):
+    try:
+        blog_post = Post.objects.get(slug=slug)
+    except Post.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    user = request.user
+    if blog_post.author != user:
+        return Response({'response': "You don't have permission to edit that."})
+    print(user)
+    if request.method == 'PUT':
+        serializer = PostUpdateSerializer(blog_post, data=request.data, partial=True)
+        data = {}
+        if serializer.is_valid():
+            serializer.save()
+            data['response'] = UPDATE_SUCCESS
+            data['title'] = blog_post.title
+            data['content'] = blog_post.content
+            data['slug'] = blog_post.slug
+            data['date_updated'] = blog_post.date_updated
             data['username'] = blog_post.author.username
             return Response(data=data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

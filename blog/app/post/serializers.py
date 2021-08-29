@@ -39,10 +39,33 @@ class PostCreateSerializer(serializers.ModelSerializer):
                 author=self.validated_data['author'],
                 title=title,
                 content=body,
-                slug = slug
+                slug=slug
             )
 
             blog_post.save()
             return blog_post
         except KeyError:
             raise serializers.ValidationError({"response": "You must have a title, some content, and an image."})
+
+
+class PostUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ['title', 'content', 'content', 'slug']
+
+    def validate(self, blog_post):
+        print(blog_post)
+        try:
+            title = blog_post['title']
+            if len(title) < MIN_TITLE_LENGTH:
+                raise serializers.ValidationError(
+                    {"response": "Enter a title longer than " + str(MIN_TITLE_LENGTH) + " characters."})
+
+            body = blog_post['content']
+            if len(body) < MIN_BODY_LENGTH:
+                raise serializers.ValidationError(
+                    {"response": "Enter a body longer than " + str(MIN_BODY_LENGTH) + " characters."})
+
+        except KeyError:
+            pass
+        return blog_post
