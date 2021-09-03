@@ -24,6 +24,10 @@ CREATE_SUCCESS = 'created'
 
 # Create your views here.
 
+@api_view(['GET', ])
+def api_get_health(request):
+    return Response(status=status.HTTP_200_OK)
+
 
 @api_view(['GET', ])
 def api_get_posts_view(request, slug):
