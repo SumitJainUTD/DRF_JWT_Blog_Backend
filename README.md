@@ -104,6 +104,11 @@ curl --location --request PUT '127.0.0.1:3000/api/fourth/update' \
 --data-raw '{
     "title":"fourth_post_title_updated_2",
     "content":"fourth_post_content_updated"
-}'```
-   
+}'
+```
+8. get health
+```
+http://127.0.0.1:3000/api/health/
+200 OK
+```
 
