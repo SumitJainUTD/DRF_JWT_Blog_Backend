@@ -14,6 +14,6 @@ urlpatterns = [
     path('health/', api_get_health, name='health'),
     path('<slug>/', api_get_posts_view, name='detail'),
     path('<slug>/update', api_update_blog_view, name="update"),
-    path('create', api_create_posts_view, name='create_post'),
+    path('create', api_create_posts_view, name='create'),
     path('list', ApiBlogListView.as_view(), name="list"),
 ]

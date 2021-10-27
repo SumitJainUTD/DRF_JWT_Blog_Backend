@@ -45,7 +45,7 @@ def api_get_posts_view(request, slug):
 
 
 @api_view(['POST', ])
-@authentication_classes([JWTAuthentication])
+# @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def api_create_posts_view(request):
     if request.method == 'POST':
